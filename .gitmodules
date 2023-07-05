@@ -21,3 +21,7 @@
 	url = https://github.com/FFmpeg/FFmpeg.git
 	branch = release/5.1
 	ignore = dirty
+[submodule "libcaption"]
+	path = libcaption
+	url = https://github.com/szatmary/libcaption
+	ignore = dirty

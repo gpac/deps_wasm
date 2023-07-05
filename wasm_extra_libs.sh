@@ -256,7 +256,6 @@ compile_package "opus" "" "" "install" "--enable-libopus" "--host=i686-gnu --ena
 
 compile_package "kvazaar" "" "disabled" "install" "--enable-libkvazaar" "--enable-shared=no --disable-asm"
 
-
 compile_x265
 
 
@@ -280,3 +279,20 @@ return 1
 fi
 
 echo "FFMPEG build successfull with libraries $ffopts"
+
+
+cat << EOF > $EM_PKG_CONFIG_PATH/libcaption.pc
+prefix=$prefix
+exec_prefix=\${prefix}
+libdir=\${exec_prefix}/lib
+includedir=\${prefix}/include
+
+Name: libcaption
+Description: libcaption
+Version: 1
+Libs: -L\${libdir} -lcaption
+Libs.private:
+Cflags: -I\${includedir}
+EOF
+
+compile_package "libcaption" "" "" "install/local/fast" "" "-DENABLE_RE2C=OFF -DBUILD_EXAMPLES=OFF -DCMAKE_POSITION_INDEPENDENT_CODE=ON"
