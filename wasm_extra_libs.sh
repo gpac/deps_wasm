@@ -318,3 +318,13 @@ Libs: -L\${libdir} -lMpeghDec -lMpegTPDec -lPCMutils -lIGFdec -lArithCoding -lFo
 Libs.private:
 Cflags: -I\${includedir}
 EOF
+
+
+pushd $root_dir/libcaca
+autoreconf -i
+emconfigure ./configure  --prefix="$prefix" --disable-doc --disable-slang --disable-java --disable-csharp --disable-ruby --disable-imlib2  --disable-x11 --disable-vga
+pushd caca
+make -j4
+make install
+popd
+popd

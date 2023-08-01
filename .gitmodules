@@ -29,3 +29,7 @@
 	path = mpeghdec
 	url = https://github.com/Fraunhofer-IIS/mpeghdec.git
 	ignore = dirty
+[submodule "libcaca"]
+	path = libcaca
+	url = https://github.com/cacalabs/libcaca
+	ignore = dirty
