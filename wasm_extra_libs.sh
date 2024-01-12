@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 build_dir="wasm"
 use_threads=0
