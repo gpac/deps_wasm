@@ -155,7 +155,7 @@ if [ ! -f Makefile ] ; then
 
 	if test $ret != 0 ; then
 		cd $root_dir
-		return;
+		return $ret;
 	fi
 fi
 
@@ -169,7 +169,7 @@ emmake make -j
 ret=$?
 if test $ret != 0 ; then
 	cd $root_dir
-	return
+	return $ret
 fi
 
 if test "$target" != "" ; then
@@ -276,7 +276,7 @@ ret=$?
 if test $ret != 0 ; then
 echo "Failed to build FFMPEG and dependencies $ffopts"
 cd $root_dir
-return 1
+exit $ret
 fi
 
 echo "FFMPEG build successfull with libraries $ffopts"
