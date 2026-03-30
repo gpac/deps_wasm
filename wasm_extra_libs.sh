@@ -302,8 +302,8 @@ compile_package "libcaption" "" "" "install/local/fast" "" "-DENABLE_RE2C=OFF -D
 sed -i 's/git@github.com:/https:\/\/github.com\//'  mpeghdec/CMakeLists.txt
 
 compile_package "mpeghdec" "" "" "" "" " -DCMAKE_BUILD_TYPE=Release -Dmpeghdec_BUILD_BINARIES=OFF -Dmpeghdec_BUILD_DOC=OFF"
-cp -av mpeghdec/build/$build_dir/lib/*.a $build_dir/lib/
-cp -av mpeghdec/include/mpeghdecoder.h $build_dir/include/
+cp -av mpeghdec/build/$build_dir/lib/libmpeghdec.a $build_dir/lib/
+cp -av mpeghdec/include/mpeghdecoder.h mpeghdec/include/mpeghexport.h $build_dir/include/
 
 cat << EOF > $EM_PKG_CONFIG_PATH/mpeghdec.pc
 prefix=$prefix
@@ -314,7 +314,7 @@ includedir=\${prefix}/include
 Name: mpeghdec
 Description: mpeghdec
 Version: 1
-Libs: -L\${libdir} -lMpeghDec -lMpegTPDec -lPCMutils -lIGFdec -lArithCoding -lFormatConverter -lgVBAPRenderer -lDRCdec -lUIManager -lSYS -lFDK -lm
+Libs: -L\${libdir} -lmpeghdec -lm
 Libs.private:
 Cflags: -I\${includedir}
 EOF
